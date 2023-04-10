@@ -95,7 +95,7 @@ void add_item(Record data)
     }
 }
 
-void findAndInsert(char value[5], Record data) {
+void find_and_insert(char value[5], Record data) {
     pCurrent = pStart;
     do {
         if (strcmp(pCurrent->data.transport, value) == 0) {
@@ -168,7 +168,7 @@ int main()
     cout << "\n\nВведите строку, после которой нужно ввести значения: "; cin >> value;
     cout << "Ваша строка: " << value << endl;
 
-    findAndInsert(value, newRecord);
+    find_and_insert(value, newRecord);
 
     draw_table();
 
