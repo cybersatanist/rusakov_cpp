@@ -95,6 +95,22 @@ void add_item(Record data)
     }
 }
 
+void findAndInsert(char value[5], Record data) {
+    pCurrent = pStart;
+    do {
+        if (strcmp(pCurrent->data.transport, value) == 0) {
+            Node* newNode = new Node;
+            newNode->data = data;
+            newNode->prev_item = pCurrent;
+            newNode->next_item = pCurrent->next_item;
+            pCurrent->next_item->prev_item = newNode;
+            pCurrent->next_item = newNode;
+            pCurrent = newNode;
+        }
+        pCurrent = pCurrent->next_item;
+    } while (pCurrent != pStart);
+}
+
 void draw_table() 
 {
     cout << endl; cout.width(94); cout.fill('-'); cout << "-" << endl;
@@ -139,7 +155,7 @@ int main()
     struct Record records[10];
     records[0] = { "Tr.", "12", 27.550, 75, {03,04,2022} };
     records[1] = { "T-s", "17", 13.600, 57, {03,04,2020} };
-    records[2] = { "Tr.", "12a", 57.300, 117, {04,03,2022} };
+    records[2] = { "Tr.", "42", 5450, 121, {01,01,2021} };
 
     add_item(records[0]);	
     add_item(records[1]);
@@ -151,6 +167,8 @@ int main()
 
     cout << "\n\nВведите строку, после которой нужно ввести значения: "; cin >> value;
     cout << "Ваша строка: " << value << endl;
+
+    findAndInsert(value, newRecord);
 
     draw_table();
 
