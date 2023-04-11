@@ -1,5 +1,3 @@
-// В процессе
-
 #include <iostream>
 #include <locale>
 #include <cstring>
@@ -62,15 +60,16 @@ void print_date(unsigned short day, unsigned short month, unsigned short year, i
     cout.width(delta); cout << " ";
 }
 
+struct Node *pPrev, *pTemp, *pCurrent, *pStart, *pEnd;
+int count = -1;
+int temp = 0;
+
 struct Node
 {
     Record data;
     Node *prev_item;
     Node *next_item;
 };
-
-struct Node *pPrev, *pTemp, *pCurrent, *pStart, *pEnd;
-int count = -1;
 
 void add_item(Record data)
 {
@@ -95,11 +94,13 @@ void add_item(Record data)
     }
 }
 
-void find_and_insert(char value[5], Record data) {
+void find_and_insert(char value[10], Record data) 
+{
     pCurrent = pStart;
-    do {
-        if (strcmp(pCurrent->data.transport, value) == 0) {
+    for (int i = 0; i <= count; i++) {
+        if ((strcmp(pCurrent->data.transport, value) == 0) or (strcmp(pCurrent->data.route, value) == 0)) {
             Node* newNode = new Node;
+            temp += 1;
             newNode->data = data;
             newNode->prev_item = pCurrent;
             newNode->next_item = pCurrent->next_item;
@@ -108,7 +109,8 @@ void find_and_insert(char value[5], Record data) {
             pCurrent = newNode;
         }
         pCurrent = pCurrent->next_item;
-    } while (pCurrent != pStart);
+    }
+    count = count + temp;
 }
 
 void draw_table() 
@@ -149,17 +151,22 @@ void draw_table()
 int main()
 {
 
-    char value[5];
-	setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "Russian");
+
+    char value[10];
 
     struct Record records[10];
     records[0] = { "Tr.", "12", 27.550, 75, {03,04,2022} };
     records[1] = { "T-s", "17", 13.600, 57, {03,04,2020} };
-    records[2] = { "Tr.", "42", 5450, 121, {01,01,2021} };
+    records[2] = { "Tr.", "12a", 57.300, 117, {04,03,2022} };
+    records[3] = { "A", "15b", 87.440, 119, {04,03,2020} };
+    records[4] = { "Cycle", "12", 10.120, 69, {01,01,2023} };
 
     add_item(records[0]);	
     add_item(records[1]);
     add_item(records[2]);
+    add_item(records[3]);
+    add_item(records[4]);
 
     draw_table();
 
