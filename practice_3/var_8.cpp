@@ -30,14 +30,6 @@ void my_centr(string s, int wLine)
     cout.width(delta + 1); cout << " ";
 }
 
-void draw_line() 
-{
-    for (int i = 0; i <= 80; i++) {
-        cout << "-";
-    }
-    cout << "\n";
-}
-
 void print_date(unsigned short day, unsigned short month, unsigned short year, int wLine) 
 {
     int w = 10;
