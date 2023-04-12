@@ -66,7 +66,7 @@ void draw_table(struct Records* records, int count) {
     cout.width(79); cout.fill('-'); cout << "-" << endl;
     cout.fill(' ');
 
-    for (int i = 0; i < count; i++) {
+    for (int i = 1; i < count; i++) {
         cout << left << "|"; cout.width(12); cout << left << records[i].name;
         cout << left << "|"; cout.width(14); cout << left << records[i].producer;
         cout << "|"; cout.width(24); cout << left << records[i].quantity;
@@ -83,15 +83,15 @@ void draw_table(struct Records* records, int count) {
 }
 
 void find_min_value(Records* records) {
-    min_quantity = records[0].quantity;
-    for (int i = 1; i < 3; i++) {
+    min_quantity = records[1].quantity;
+    for (int i = 2; i < 4; i++) {
         if (min_quantity > records[i].quantity) {
             min_quantity = records[i].quantity;
         }
     }
 
-    min_price = records[0].price;
-    for (int i = 1; i < 3; i++) {
+    min_price = records[1].price;
+    for (int i = 2; i < 4; i++) {
         if (min_price > records[i].price) {
             min_price = records[i].price;
         }
@@ -103,24 +103,24 @@ int main() {
 
     setlocale(LC_ALL, "Russian");
 
-    struct Records records[3];
-    records[0] = { "Office", "Microsoft", 4, 870.99, {11,01,2011} };
-    records[1] = { "SmartSute", "Lotus", 5, 1020.99, {21,12,2012} };
-    records[2] = { "StarOffice", "Sun", 4, 9.99, {12,10,2020} };
+    struct Records records[10];
+    records[1] = { "Office", "Microsoft", 4, 870.99, {11,01,2011} };
+    records[2] = { "SmartSute", "Lotus", 5, 1020.99, {21,12,2012} };
+    records[3] = { "StarOffice", "Sun", 4, 9.99, {12,10,2020} };
     cout << "Исходные данные:" << endl;
-    draw_table(records, 3);
+    draw_table(records, 4);
 
     cout << "\n" << "Вариант задания: Добавить новую запись (элемент массива структур), содержащие минимальные числовые значения в столбцах." << "\n" << endl;
     cout << "Данные по варианту задания:" << endl;
 
     find_min_value(records);
 
-    struct Records newRecords[4];
-    for (int i = 0; i < 3; i++) {
+    struct Records newRecords[10];
+    for (int i = 1; i < 4; i++) {
         newRecords[i] = records[i];
     }
-    newRecords[3] = {"NULL","NULL", min_quantity, min_price, {11,11,1111} };
-    draw_table(newRecords, 4);
+    newRecords[4] = {"NULL","NULL", min_quantity, min_price, {11,11,1111} };
+    draw_table(newRecords, 5);
 
     cout << endl;
 
