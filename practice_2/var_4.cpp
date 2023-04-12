@@ -69,7 +69,7 @@ int main()
         cout << endl << "Aдрес B[i] = " << &B[i] << "; B[i] -> Year: " << B[i] -> date.year << endl;
     }
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i <= 10; i++) {
         delete B[i];
     }
 
