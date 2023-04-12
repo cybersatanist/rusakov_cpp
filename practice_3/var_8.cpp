@@ -123,7 +123,7 @@ void draw_table()
 
     pCurrent = pStart;
 
-    for (int i = 0; i <= count; i++) {
+    for (int i = 1; i < count; i++) {
         cout << left << "|"; cout.width(16); cout << left << pCurrent->data.transport;
         cout << left << "|"; cout.width(9); cout << left << pCurrent->data.route;
         std::cout.precision(3); cout << "|"; cout.width(29); cout << right << fixed << pCurrent->data.extent;
@@ -148,17 +148,17 @@ int main()
     char value[10];
 
     struct Record records[10];
-    records[0] = { "Tr.", "12", 27.550, 75, {03,04,2022} };
-    records[1] = { "T-s", "17", 13.600, 57, {03,04,2020} };
-    records[2] = { "Tr.", "12a", 57.300, 117, {04,03,2022} };
-    records[3] = { "A", "15b", 87.440, 119, {04,03,2020} };
-    records[4] = { "Cycle", "12", 10.120, 69, {01,01,2023} };
+    records[1] = { "Tr.", "12", 27.550, 75, {03,04,2022} };
+    records[2] = { "T-s", "17", 13.600, 57, {03,04,2020} };
+    records[3] = { "Tr.", "12a", 57.300, 117, {04,03,2022} };
+    records[4] = { "A", "15b", 87.440, 119, {04,03,2020} };
+    records[5] = { "Cycle", "12", 10.120, 69, {01,01,2023} };
 
-    add_item(records[0]);	
-    add_item(records[1]);
+    add_item(records[1]);	
     add_item(records[2]);
     add_item(records[3]);
     add_item(records[4]);
+    add_item(records[5]);
 
     draw_table();
 
