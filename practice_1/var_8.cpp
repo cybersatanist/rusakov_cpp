@@ -20,14 +20,6 @@ struct Record
     struct Date date;
 };
 
-void draw_line() 
-{
-    for (int i = 0; i <= 80; i++) {
-        cout << "-";
-    }
-    cout << "\n";
-}
-
 void my_centr(string s, int wLine) 
 {
     int w = s.length();
@@ -76,7 +68,7 @@ void draw(struct Record* records)
     cout.width(94); cout.fill('-'); cout << "-" << endl;
     cout.fill(' ');
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 1; i < 4; i++) {
         cout << left << "|"; cout.width(16); cout << left << records[i].transport;
         cout << left << "|"; cout.width(9); cout << left << records[i].route;
         std::cout.precision(3); cout << "|"; cout.width(29); cout << right << fixed << records[i].extent;
@@ -94,7 +86,7 @@ void draw(struct Record* records)
 
 void delete_string_values(struct Record* records) 
 {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 1; i < 4; i++) {
         strcpy(records[i].transport, "");
         strcpy(records[i].route, "");
     }
@@ -105,11 +97,11 @@ int main()
 
     setlocale(LC_ALL, "Russian");
 
-    struct Record records[3];
+    struct Record records[10];
 
-    records[0] = { "Tr.", "12", 27.550, 75, {03,04,2022} };
-    records[1] = { "T-s", "17", 13.600, 57, {03,04,2020} };
-    records[2] = { "A", "12a", 57.300, 117, {04,03,2022} };
+    records[1] = { "Tr.", "12", 27.550, 75, {03,04,2022} };
+    records[2] = { "T-s", "17", 13.600, 57, {03,04,2020} };
+    records[3] = { "A", "12a", 57.300, 117, {04,03,2022} };
     cout << "Исходные данные:" << endl;
     draw(records);
 
