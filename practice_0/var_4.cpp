@@ -11,7 +11,7 @@ struct Records {
     unsigned int quantity;
     float price;
     char date[11];
-} RECORDS[2];
+} RECORDS[3];
 
 void center(const char* s, int wLine) {
     int w = strlen(s);
@@ -69,15 +69,15 @@ int main() {
 
     setlocale(LC_ALL, "Russian");
 
-    entering_values(0); cout << endl;
     entering_values(1); cout << endl;
     entering_values(2); cout << endl;
+    entering_values(3); cout << endl;
 
     draw_table_head();
 
-    print_strings(0);
     print_strings(1);
     print_strings(2);
+    print_strings(3);
 
     draw_table_note();
 
